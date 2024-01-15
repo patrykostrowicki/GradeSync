@@ -1,0 +1,58 @@
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\GradeSync.exe.config
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\GradeSync.exe
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.AssemblyReference.cache
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.login.resources
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.Properties.Resources.resources
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.GenerateResource.cache
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.CoreCompileInputs.cache
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.exe
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\MaterialSkin.dll
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.CopyComplete
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\MetroFramework.Design.dll
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\MetroFramework.dll
+C:\Users\altai\Desktop\GradeSync\GradeSync\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.kontrolki.textbox.resources
+C:\Users\altai\Desktop\GradeSync\GradeSync\obj\Debug\GradeSync.uczen.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\GradeSync.exe.config
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\GradeSync.exe
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\MaterialSkin.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\MetroFramework.Design.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\MetroFramework.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.AssemblyReference.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.kontrolki.textbox.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.login.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.Properties.Resources.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.uczen.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.GenerateResource.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.CoreCompileInputs.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.csproj.CopyComplete
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.exe
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync\GradeSync\obj\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\GradeSync.exe.config
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\GradeSync.exe
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\MaterialSkin.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\MetroFramework.Design.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\MetroFramework.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.csproj.AssemblyReference.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.kontrolki.textbox.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.login.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.Properties.Resources.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.uczen.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.csproj.GenerateResource.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.csproj.CoreCompileInputs.cache
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.csproj.CopyComplete
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.exe
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\Newtonsoft.Json.dll
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\bin\Debug\Newtonsoft.Json.xml
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.nauczyciel.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.kontrolki.edytujUwage.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.kontrolki.noweWydarzenie.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.kontrolki.edytujFrekwencje.resources
+C:\Users\altai\Desktop\projekt - dziennik elektroniczny\GradeSync Client\GradeSync\obj\Debug\GradeSync.admin.resources
