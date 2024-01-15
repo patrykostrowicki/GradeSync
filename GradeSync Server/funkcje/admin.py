@@ -25,8 +25,6 @@ class zadanie:
             result_nauczyciele_processed = []
             for record in result_nauczyciele:
                 processed_record = list(record)
-                if processed_record[3] is not None:
-                    processed_record[3] = processed_record[3].decode('utf-8')
                 result_nauczyciele_processed.append(processed_record)
 
             query_admini = "SELECT login FROM uzytkownicy where typ = 'admin'"
@@ -48,11 +46,11 @@ class zadanie:
             for plan in plans:
                 plany.append({
                     "klasa": plan[0],
-                    "poniedzialek": json.loads(plan[1].decode('utf-8')) if plan[1] else {},
-                    "wtorek": json.loads(plan[2].decode('utf-8')) if plan[2] else {},
-                    "sroda": json.loads(plan[3].decode('utf-8')) if plan[3] else {},
-                    "czwartek": json.loads(plan[4].decode('utf-8')) if plan[4] else {},
-                    "piatek": json.loads(plan[5].decode('utf-8')) if plan[5] else {}
+                    "poniedzialek": json.loads(plan[1]) if plan[1] else {},
+                    "wtorek": json.loads(plan[2]) if plan[2] else {},
+                    "sroda": json.loads(plan[3]) if plan[3] else {},
+                    "czwartek": json.loads(plan[4]) if plan[4] else {},
+                    "piatek": json.loads(plan[5]) if plan[5] else {}
                 })
 
 

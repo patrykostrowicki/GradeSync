@@ -169,7 +169,7 @@
         {
             if (frekwencja == null || frekwencja.Count == 0)
             {
-                Log("Brak danych frekwencji dla tego ucznia.");
+                wspólneMetody.Log("Brak danych frekwencji dla tego ucznia.", output_przeg_klasy);
                 return;
             }
 
@@ -185,7 +185,7 @@
                 int spoznienia = grupowaneFrekwencje[przedmiot].Count(f => f["typ"] == "3");
 
                 string formattedWpis = $"Przedmiot: {przedmiot}\nNieobecności: {nieobecnosci}\nUsprawiedliwione: {usprawiedliwione}\nSpóźnienia: {spoznienia}\n";
-                Log(formattedWpis);
+                wspólneMetody.Log(formattedWpis, output_przeg_klasy);
             }
         }
 
@@ -193,7 +193,7 @@
         {
             if (uwagi == null || uwagi.Count == 0)
             {
-                Log("Brak uwag dla tego ucznia.");
+                wspólneMetody.Log("Brak uwag dla tego ucznia.", output_przeg_klasy);
                 return;
             }
 
@@ -205,7 +205,7 @@
                 string typTekstowy = uwaga["typ"] == "1" ? "Uwaga" : "Osiągnięcie";
                 string formattedUwaga = $"Wystawił: {uwaga["wystawil"]}\nData: {uwaga["data"]}\nTyp: {typTekstowy}\nTreść: {uwaga["tresc"]}\n";
 
-                Log(formattedUwaga);
+                wspólneMetody.Log(formattedUwaga, output_przeg_klasy);
             }
         }
 
@@ -214,7 +214,7 @@
         {
             if (oceny == null || !oceny.Any())
             {
-                Log("Brak ocen dla tego ucznia.");
+                wspólneMetody.Log("Brak ocen dla tego ucznia.", output_przeg_klasy);
                 return;
             }
 
@@ -233,15 +233,9 @@
                     formattedOcena = FormatujOcene(ocena[0]) + " | " + string.Join(" | ", ocena.Skip(1));
                 }
 
-                Log(formattedOcena);
+                wspólneMetody.Log(formattedOcena, output_przeg_klasy);
             }
         }
-
-
-        private void Log(string text)
-            {
-                output_przeg_klasy.Invoke(new MethodInvoker(delegate () { output_przeg_klasy.AppendText(text + "\r\n"); output_przeg_klasy.ScrollToCaret(); }));
-            }
 
             private void DodajUczniowDoDatagridview()
             {

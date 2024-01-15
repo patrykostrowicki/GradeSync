@@ -22,6 +22,7 @@ namespace GradeSync
             wspólneMetody.StylizujDataGridView(uczniowie);
             wspólneMetody.StylizujDataGridView(nauczyciele);
             wspólneMetody.StylizujDataGridView(admini);
+            wspólneMetody.StylizujDataGridView(plany_lekcji);
         }
 
         private void admin_Load(object sender, System.EventArgs e)
@@ -32,6 +33,8 @@ namespace GradeSync
             DodajNauczycieliDoDataGridView();
 
             DodajAdminowDoDataGridView();
+
+            WypelnijDataGridViewPlanamiLekcji();
         }
 
         private void DodajUczniowDoDataGridView()
@@ -579,5 +582,39 @@ namespace GradeSync
                 }
             }
         }
+
+        private void WypelnijDataGridViewPlanamiLekcji()
+        {
+            plany_lekcji.Rows.Clear();
+            plan_klasy.Items.Clear();
+
+            HashSet<string> unikalneKlasy = new HashSet<string>();
+
+            foreach (var plan in adminResponse.PlanyLekcji)
+            {
+                int rowIndex = plany_lekcji.Rows.Add();
+                plany_lekcji.Rows[rowIndex].Cells["klasa"].Value = plan.Klasa;
+
+                var przyciskEdytuj = new DataGridViewButtonCell
+                {
+                    Value = "Edytuj"
+                };
+                plany_lekcji.Rows[rowIndex].Cells["edytuj"] = przyciskEdytuj;
+
+                var przyciskWyswietl = new DataGridViewButtonCell
+                {
+                    Value = "Wyświetl ➡️"
+                };
+                plany_lekcji.Rows[rowIndex].Cells["wyswietl_plan"] = przyciskWyswietl;
+
+                unikalneKlasy.Add(plan.Klasa);
+            }
+
+            foreach (var klasa in unikalneKlasy)
+            {
+                plan_klasy.Items.Add(klasa);
+            }
+        }
+
     }
 }

@@ -26,5 +26,10 @@ namespace GradeSync.klasy
             dgv.RowsDefaultCellStyle.BackColor = Color.White;
             dgv.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
         }
+
+        internal static void Log(string text, RichTextBox rt)
+        {
+            rt.Invoke(new MethodInvoker(delegate () { rt.AppendText(text + "\r\n"); rt.ScrollToCaret(); }));
+        }
     }
 }
