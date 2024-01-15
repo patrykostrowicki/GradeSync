@@ -26,13 +26,12 @@ class zadanie:
             cursor.execute(query_plan_zajec, (result_uczen[1], semestr))
             plan = cursor.fetchone()
             
-            #dekodowanie wartości json
             plany[f'plan{semestr}'] = {
-                "poniedzialek": json.loads(plan[0].decode('utf-8')) if plan[0] else {},
-                "wtorek": json.loads(plan[1].decode('utf-8')) if plan[1] else {},
-                "sroda": json.loads(plan[2].decode('utf-8')) if plan[2] else {},
-                "czwartek": json.loads(plan[3].decode('utf-8')) if plan[3] else {},
-                "piatek": json.loads(plan[4].decode('utf-8')) if plan[4] else {}
+                "poniedzialek": json.loads(plan[0]) if plan[0] else {},
+                "wtorek": json.loads(plan[1]) if plan[1] else {},
+                "sroda": json.loads(plan[2]) if plan[2] else {},
+                "czwartek": json.loads(plan[3]) if plan[3] else {},
+                "piatek": json.loads(plan[4]) if plan[4] else {}
             }
 
         query_oceny = "SELECT przedmiot, ocena, wystawil, data_wystawienia,opis FROM oceny WHERE uczen_login = %s"

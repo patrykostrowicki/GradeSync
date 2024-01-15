@@ -109,7 +109,7 @@ class zadanie:
         zajecia = []
         for klasa, plan_dnia in result_plan_zajec:
             plan_dnia = json.loads(plan_dnia)
-            for lekcja, szczegoly in plan_dnia.items():
+            for szczegoly in plan_dnia.items():
                 if szczegoly.get('prowadzacy_login') == login:
                     zajecia.append({
                         "klasa": klasa,
@@ -122,7 +122,7 @@ class zadanie:
         response_data = {
             "imie_nazwisko": result_nauczyciel[0],
             "klasa": result_nauczyciel[1],
-            "inne": json.loads(result_nauczyciel[2].decode('utf-8')) if result_nauczyciel[2] else {},
+            "inne": json.loads(result_nauczyciel[2]) if result_nauczyciel[2] else {},
             "uczniowie": uczniowie_list,
             "wydarzenia": wydarzenia_list,
             "uwagi_i_osiagniecia": uwagi_list,
