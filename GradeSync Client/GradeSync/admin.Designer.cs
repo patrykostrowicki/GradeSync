@@ -61,6 +61,15 @@
             this.login_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usun_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.nowy_plan = new MaterialSkin.Controls.MaterialButton();
+            this.wyswietl_plan_lekcji = new System.Windows.Forms.RichTextBox();
+            this.dzien_tygodnia = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.klasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edytuj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wyswietl_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialTabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uczniowie)).BeginInit();
@@ -68,6 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nauczyciele)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.admini)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -414,12 +425,113 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.metroLabel1);
+            this.tabPage5.Controls.Add(this.dzien_tygodnia);
+            this.tabPage5.Controls.Add(this.wyswietl_plan_lekcji);
+            this.tabPage5.Controls.Add(this.nowy_plan);
+            this.tabPage5.Controls.Add(this.metroComboBox1);
+            this.tabPage5.Controls.Add(this.dataGridView1);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1083, 569);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Plany lekcji";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.klasa,
+            this.edytuj,
+            this.wyswietl_plan});
+            this.dataGridView1.Location = new System.Drawing.Point(7, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(454, 503);
+            this.dataGridView1.TabIndex = 17;
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(7, 17);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox1.TabIndex = 18;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // nowy_plan
+            // 
+            this.nowy_plan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.nowy_plan.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.nowy_plan.Depth = 0;
+            this.nowy_plan.HighEmphasis = true;
+            this.nowy_plan.Icon = null;
+            this.nowy_plan.Location = new System.Drawing.Point(304, 10);
+            this.nowy_plan.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.nowy_plan.MouseState = MaterialSkin.MouseState.HOVER;
+            this.nowy_plan.Name = "nowy_plan";
+            this.nowy_plan.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.nowy_plan.Size = new System.Drawing.Size(157, 36);
+            this.nowy_plan.TabIndex = 19;
+            this.nowy_plan.Text = "Nowy plan lekcji";
+            this.nowy_plan.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.nowy_plan.UseAccentColor = false;
+            this.nowy_plan.UseVisualStyleBackColor = true;
+            // 
+            // wyswietl_plan_lekcji
+            // 
+            this.wyswietl_plan_lekcji.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.wyswietl_plan_lekcji.Location = new System.Drawing.Point(467, 52);
+            this.wyswietl_plan_lekcji.Name = "wyswietl_plan_lekcji";
+            this.wyswietl_plan_lekcji.ReadOnly = true;
+            this.wyswietl_plan_lekcji.Size = new System.Drawing.Size(613, 503);
+            this.wyswietl_plan_lekcji.TabIndex = 20;
+            this.wyswietl_plan_lekcji.Text = "";
+            // 
+            // dzien_tygodnia
+            // 
+            this.dzien_tygodnia.AutoCompleteCustomSource.AddRange(new string[] {
+            "Poniedziałek",
+            "Wtorek",
+            "Środa",
+            "Czwartek",
+            "Piątek"});
+            this.dzien_tygodnia.FormattingEnabled = true;
+            this.dzien_tygodnia.ItemHeight = 23;
+            this.dzien_tygodnia.Location = new System.Drawing.Point(740, 19);
+            this.dzien_tygodnia.Name = "dzien_tygodnia";
+            this.dzien_tygodnia.Size = new System.Drawing.Size(170, 29);
+            this.dzien_tygodnia.TabIndex = 21;
+            this.dzien_tygodnia.UseSelectable = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(587, 24);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(147, 19);
+            this.metroLabel1.TabIndex = 22;
+            this.metroLabel1.Text = "Wybierz dzień tygodnia";
+            // 
+            // klasa
+            // 
+            this.klasa.HeaderText = "Klasa";
+            this.klasa.Name = "klasa";
+            this.klasa.ReadOnly = true;
+            // 
+            // edytuj
+            // 
+            this.edytuj.HeaderText = "Edytuj";
+            this.edytuj.Name = "edytuj";
+            this.edytuj.ReadOnly = true;
+            // 
+            // wyswietl_plan
+            // 
+            this.wyswietl_plan.HeaderText = "Wyświetl";
+            this.wyswietl_plan.Name = "wyswietl_plan";
+            this.wyswietl_plan.ReadOnly = true;
             // 
             // admin
             // 
@@ -442,6 +554,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.admini)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -480,5 +595,14 @@
         private System.Windows.Forms.DataGridView admini;
         private System.Windows.Forms.DataGridViewTextBoxColumn login_admin;
         private System.Windows.Forms.DataGridViewTextBoxColumn usun_admin;
+        private MaterialSkin.Controls.MaterialButton nowy_plan;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox wyswietl_plan_lekcji;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroComboBox dzien_tygodnia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn klasa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn edytuj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wyswietl_plan;
     }
 }
