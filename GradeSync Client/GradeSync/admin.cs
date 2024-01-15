@@ -13,6 +13,7 @@ namespace GradeSync
     public partial class admin : MaterialForm
     {
         private AdminResponse adminResponse;
+        private string wybranaKlasa;
 
         public admin(AdminResponse response)
         {
@@ -616,6 +617,94 @@ namespace GradeSync
             {
                 plan_klasy.Items.Add(klasa);
             }
+            plan_klasy.Items.Add("WSZYSTKIE");
+        }
+
+        private void FiltrujDataGridViewPlanamiLekcji()
+        {
+            string wybranaKlasa = plan_klasy.SelectedItem?.ToString();
+
+            foreach (DataGridViewRow row in plany_lekcji.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    if (wybranaKlasa == null || wybranaKlasa == "WSZYSTKIE")
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = row.Cells["klasa"].Value?.ToString() == wybranaKlasa;
+                    }
+                }
+            }
+        }
+
+        private void plan_klasy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrujDataGridViewPlanamiLekcji();
+        }
+
+        private void plany_lekcji_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == plany_lekcji.Columns["wyswietl_plan"].Index && e.RowIndex >= 0)
+            {
+                dzien_tygodnia.Enabled = true;
+                wyswietl_plan_lekcji.Clear();
+                wybranaKlasa = plany_lekcji.Rows[e.RowIndex].Cells["klasa"].Value?.ToString();
+            }
+        }
+
+        private void WyswietlPlanLekcji(string klasa, string dzienTygodnia)
+        {
+            var mappingDniTygodnia = new Dictionary<string, string>
+            {
+                {"Poniedziałek", "Poniedzialek"},
+                {"Wtorek", "Wtorek"},
+                {"Środa", "Sroda"},
+                {"Czwartek", "Czwartek"},
+                {"Piątek", "Piatek"}
+            };
+
+
+            string dzienTygodniaKey = mappingDniTygodnia[dzienTygodnia];
+
+            var planLekcji = adminResponse.PlanyLekcji.FirstOrDefault(p => p.Klasa == klasa);
+            if (planLekcji != null)
+            {
+                Dictionary<string, Lekcja> planDnia = typeof(PlanLekcji).GetProperty(dzienTygodniaKey).GetValue(planLekcji) as Dictionary<string, Lekcja>;
+                WyswietlPlanDnia(planDnia);
+            }
+            else
+            {
+                wspólneMetody.Log("Nie znaleziono planu lekcji dla klasy " + klasa, wyswietl_plan_lekcji);
+            }
+        }
+
+        private void WyswietlPlanDnia(Dictionary<string, Lekcja> planDnia)
+        {
+            wyswietl_plan_lekcji.Clear();
+            if (planDnia != null)
+            {
+                foreach (var lekcja in planDnia)
+                {
+                    //ucięcie 3 pierwszych znaków np. po to aby zamiast lek0 było 0 itd.
+                    string numerLekcji = lekcja.Key.Substring(3);
+
+                    string text = $"Lekcja {numerLekcji}: {lekcja.Value.Przedmiot}, Prowadzący: {lekcja.Value.Prowadzacy}, Sala: {lekcja.Value.Sala}";
+                    wspólneMetody.Log($"{text}\n", wyswietl_plan_lekcji);
+                }
+            }
+            else
+            {
+                wspólneMetody.Log("Brak lekcji w tym dniu.", wyswietl_plan_lekcji);
+            }
+        }
+
+
+        private void dzien_tygodnia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WyswietlPlanLekcji(wybranaKlasa, dzien_tygodnia.SelectedItem.ToString());
         }
     }
 }

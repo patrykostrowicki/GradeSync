@@ -34,7 +34,6 @@
             this.nowy_uzytkownik = new MaterialSkin.Controls.MaterialButton();
             this.klasa_uczniowie = new MetroFramework.Controls.MetroComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.wyszukiwarka_uczniowie = new GradeSync.kontrolki.textbox();
             this.uczniowie = new System.Windows.Forms.DataGridView();
             this.imie_nazwisko_uczen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.login_uczen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +51,9 @@
             this.przedmioty_nauczyciel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zmiendane_nauczyciel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usun_nauczyciel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nauczyciele_wyszukiwarka = new GradeSync.kontrolki.textbox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.utworz_admina = new MaterialSkin.Controls.MaterialButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.admin_wyszukiwarka = new GradeSync.kontrolki.textbox();
             this.admini = new System.Windows.Forms.DataGridView();
             this.login_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usun_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +67,9 @@
             this.klasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edytuj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wyswietl_plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wyszukiwarka_uczniowie = new GradeSync.kontrolki.textbox();
+            this.nauczyciele_wyszukiwarka = new GradeSync.kontrolki.textbox();
+            this.admin_wyszukiwarka = new GradeSync.kontrolki.textbox();
             this.materialTabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uczniowie)).BeginInit();
@@ -150,26 +150,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(32, 32);
             this.panel1.TabIndex = 4;
-            // 
-            // wyszukiwarka_uczniowie
-            // 
-            this.wyszukiwarka_uczniowie.BackColor = System.Drawing.SystemColors.Window;
-            this.wyszukiwarka_uczniowie.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.wyszukiwarka_uczniowie.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.wyszukiwarka_uczniowie.BorderSize = 2;
-            this.wyszukiwarka_uczniowie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wyszukiwarka_uczniowie.ForeColor = System.Drawing.Color.DimGray;
-            this.wyszukiwarka_uczniowie.Location = new System.Drawing.Point(44, 21);
-            this.wyszukiwarka_uczniowie.Margin = new System.Windows.Forms.Padding(4);
-            this.wyszukiwarka_uczniowie.Multiline = false;
-            this.wyszukiwarka_uczniowie.Name = "wyszukiwarka_uczniowie";
-            this.wyszukiwarka_uczniowie.Padding = new System.Windows.Forms.Padding(7);
-            this.wyszukiwarka_uczniowie.PasswordChar = false;
-            this.wyszukiwarka_uczniowie.Size = new System.Drawing.Size(313, 31);
-            this.wyszukiwarka_uczniowie.TabIndex = 3;
-            this.wyszukiwarka_uczniowie.Texts = "";
-            this.wyszukiwarka_uczniowie.UnderlinedStyle = false;
-            this.wyszukiwarka_uczniowie._TextChanged += new System.EventHandler(this.wyszukiwarka_uczniowie__TextChanged);
             // 
             // uczniowie
             // 
@@ -317,32 +297,12 @@
             this.usun_nauczyciel.Name = "usun_nauczyciel";
             this.usun_nauczyciel.ReadOnly = true;
             // 
-            // nauczyciele_wyszukiwarka
-            // 
-            this.nauczyciele_wyszukiwarka.BackColor = System.Drawing.SystemColors.Window;
-            this.nauczyciele_wyszukiwarka.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.nauczyciele_wyszukiwarka.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.nauczyciele_wyszukiwarka.BorderSize = 2;
-            this.nauczyciele_wyszukiwarka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nauczyciele_wyszukiwarka.ForeColor = System.Drawing.Color.DimGray;
-            this.nauczyciele_wyszukiwarka.Location = new System.Drawing.Point(44, 7);
-            this.nauczyciele_wyszukiwarka.Margin = new System.Windows.Forms.Padding(4);
-            this.nauczyciele_wyszukiwarka.Multiline = false;
-            this.nauczyciele_wyszukiwarka.Name = "nauczyciele_wyszukiwarka";
-            this.nauczyciele_wyszukiwarka.Padding = new System.Windows.Forms.Padding(7);
-            this.nauczyciele_wyszukiwarka.PasswordChar = false;
-            this.nauczyciele_wyszukiwarka.Size = new System.Drawing.Size(313, 31);
-            this.nauczyciele_wyszukiwarka.TabIndex = 8;
-            this.nauczyciele_wyszukiwarka.Texts = "";
-            this.nauczyciele_wyszukiwarka.UnderlinedStyle = false;
-            this.nauczyciele_wyszukiwarka._TextChanged += new System.EventHandler(this.nauczyciele_wyszukiwarka__TextChanged);
-            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.utworz_admina);
             this.tabPage1.Controls.Add(this.panel3);
-            this.tabPage1.Controls.Add(this.admin_wyszukiwarka);
             this.tabPage1.Controls.Add(this.admini);
+            this.tabPage1.Controls.Add(this.admin_wyszukiwarka);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(1083, 569);
@@ -378,25 +338,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(32, 32);
             this.panel3.TabIndex = 14;
-            // 
-            // admin_wyszukiwarka
-            // 
-            this.admin_wyszukiwarka.BackColor = System.Drawing.SystemColors.Window;
-            this.admin_wyszukiwarka.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.admin_wyszukiwarka.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.admin_wyszukiwarka.BorderSize = 2;
-            this.admin_wyszukiwarka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.admin_wyszukiwarka.ForeColor = System.Drawing.Color.DimGray;
-            this.admin_wyszukiwarka.Location = new System.Drawing.Point(44, 5);
-            this.admin_wyszukiwarka.Margin = new System.Windows.Forms.Padding(4);
-            this.admin_wyszukiwarka.Multiline = false;
-            this.admin_wyszukiwarka.Name = "admin_wyszukiwarka";
-            this.admin_wyszukiwarka.Padding = new System.Windows.Forms.Padding(7);
-            this.admin_wyszukiwarka.PasswordChar = false;
-            this.admin_wyszukiwarka.Size = new System.Drawing.Size(313, 31);
-            this.admin_wyszukiwarka.TabIndex = 13;
-            this.admin_wyszukiwarka.Texts = "";
-            this.admin_wyszukiwarka.UnderlinedStyle = false;
             // 
             // admini
             // 
@@ -457,15 +398,23 @@
             "Piątek"});
             this.dzien_tygodnia.FormattingEnabled = true;
             this.dzien_tygodnia.ItemHeight = 23;
+            this.dzien_tygodnia.Items.AddRange(new object[] {
+            "Poniedziałek",
+            "Wtorek",
+            "Środa",
+            "Czwartek",
+            "Piątek"});
             this.dzien_tygodnia.Location = new System.Drawing.Point(740, 19);
             this.dzien_tygodnia.Name = "dzien_tygodnia";
             this.dzien_tygodnia.Size = new System.Drawing.Size(170, 29);
             this.dzien_tygodnia.TabIndex = 21;
             this.dzien_tygodnia.UseSelectable = true;
+            this.dzien_tygodnia.SelectedIndexChanged += new System.EventHandler(this.dzien_tygodnia_SelectedIndexChanged);
             // 
             // wyswietl_plan_lekcji
             // 
             this.wyswietl_plan_lekcji.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.wyswietl_plan_lekcji.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.wyswietl_plan_lekcji.Location = new System.Drawing.Point(467, 52);
             this.wyswietl_plan_lekcji.Name = "wyswietl_plan_lekcji";
             this.wyswietl_plan_lekcji.ReadOnly = true;
@@ -501,6 +450,7 @@
             this.plan_klasy.Size = new System.Drawing.Size(121, 29);
             this.plan_klasy.TabIndex = 18;
             this.plan_klasy.UseSelectable = true;
+            this.plan_klasy.SelectedIndexChanged += new System.EventHandler(this.plan_klasy_SelectedIndexChanged);
             // 
             // plany_lekcji
             // 
@@ -514,6 +464,7 @@
             this.plany_lekcji.Name = "plany_lekcji";
             this.plany_lekcji.Size = new System.Drawing.Size(454, 503);
             this.plany_lekcji.TabIndex = 17;
+            this.plany_lekcji.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.plany_lekcji_CellClick);
             // 
             // klasa
             // 
@@ -532,6 +483,65 @@
             this.wyswietl_plan.HeaderText = "Wyświetl";
             this.wyswietl_plan.Name = "wyswietl_plan";
             this.wyswietl_plan.ReadOnly = true;
+            // 
+            // wyszukiwarka_uczniowie
+            // 
+            this.wyszukiwarka_uczniowie.BackColor = System.Drawing.SystemColors.Window;
+            this.wyszukiwarka_uczniowie.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.wyszukiwarka_uczniowie.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.wyszukiwarka_uczniowie.BorderSize = 2;
+            this.wyszukiwarka_uczniowie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wyszukiwarka_uczniowie.ForeColor = System.Drawing.Color.DimGray;
+            this.wyszukiwarka_uczniowie.Location = new System.Drawing.Point(44, 21);
+            this.wyszukiwarka_uczniowie.Margin = new System.Windows.Forms.Padding(4);
+            this.wyszukiwarka_uczniowie.Multiline = false;
+            this.wyszukiwarka_uczniowie.Name = "wyszukiwarka_uczniowie";
+            this.wyszukiwarka_uczniowie.Padding = new System.Windows.Forms.Padding(7);
+            this.wyszukiwarka_uczniowie.PasswordChar = false;
+            this.wyszukiwarka_uczniowie.Size = new System.Drawing.Size(313, 31);
+            this.wyszukiwarka_uczniowie.TabIndex = 3;
+            this.wyszukiwarka_uczniowie.Texts = "";
+            this.wyszukiwarka_uczniowie.UnderlinedStyle = false;
+            this.wyszukiwarka_uczniowie._TextChanged += new System.EventHandler(this.wyszukiwarka_uczniowie__TextChanged);
+            // 
+            // nauczyciele_wyszukiwarka
+            // 
+            this.nauczyciele_wyszukiwarka.BackColor = System.Drawing.SystemColors.Window;
+            this.nauczyciele_wyszukiwarka.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.nauczyciele_wyszukiwarka.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.nauczyciele_wyszukiwarka.BorderSize = 2;
+            this.nauczyciele_wyszukiwarka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nauczyciele_wyszukiwarka.ForeColor = System.Drawing.Color.DimGray;
+            this.nauczyciele_wyszukiwarka.Location = new System.Drawing.Point(44, 7);
+            this.nauczyciele_wyszukiwarka.Margin = new System.Windows.Forms.Padding(4);
+            this.nauczyciele_wyszukiwarka.Multiline = false;
+            this.nauczyciele_wyszukiwarka.Name = "nauczyciele_wyszukiwarka";
+            this.nauczyciele_wyszukiwarka.Padding = new System.Windows.Forms.Padding(7);
+            this.nauczyciele_wyszukiwarka.PasswordChar = false;
+            this.nauczyciele_wyszukiwarka.Size = new System.Drawing.Size(313, 31);
+            this.nauczyciele_wyszukiwarka.TabIndex = 8;
+            this.nauczyciele_wyszukiwarka.Texts = "";
+            this.nauczyciele_wyszukiwarka.UnderlinedStyle = false;
+            this.nauczyciele_wyszukiwarka._TextChanged += new System.EventHandler(this.nauczyciele_wyszukiwarka__TextChanged);
+            // 
+            // admin_wyszukiwarka
+            // 
+            this.admin_wyszukiwarka.BackColor = System.Drawing.SystemColors.Window;
+            this.admin_wyszukiwarka.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.admin_wyszukiwarka.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.admin_wyszukiwarka.BorderSize = 2;
+            this.admin_wyszukiwarka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.admin_wyszukiwarka.ForeColor = System.Drawing.Color.DimGray;
+            this.admin_wyszukiwarka.Location = new System.Drawing.Point(44, 5);
+            this.admin_wyszukiwarka.Margin = new System.Windows.Forms.Padding(4);
+            this.admin_wyszukiwarka.Multiline = false;
+            this.admin_wyszukiwarka.Name = "admin_wyszukiwarka";
+            this.admin_wyszukiwarka.Padding = new System.Windows.Forms.Padding(7);
+            this.admin_wyszukiwarka.PasswordChar = false;
+            this.admin_wyszukiwarka.Size = new System.Drawing.Size(313, 31);
+            this.admin_wyszukiwarka.TabIndex = 13;
+            this.admin_wyszukiwarka.Texts = "";
+            this.admin_wyszukiwarka.UnderlinedStyle = false;
             // 
             // admin
             // 
