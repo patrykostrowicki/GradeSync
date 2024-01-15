@@ -35,6 +35,8 @@ namespace GradeSync
             DodajAdminowDoDataGridView();
 
             WypelnijDataGridViewPlanamiLekcji();
+
+            dzien_tygodnia.Enabled = false;
         }
 
         private void DodajUczniowDoDataGridView()
@@ -615,6 +617,5 @@ namespace GradeSync
                 plan_klasy.Items.Add(klasa);
             }
         }
-
     }
 }

@@ -20,7 +20,7 @@ class zadanie:
         for semestr in [1, 2]:
             query_plan_zajec = """
                 SELECT poniedzialek, wtorek, sroda, czwartek, piatek
-                FROM Plan_zajec
+                FROM plan_zajec
                 WHERE klasa = %s AND semestr = %s
             """
             cursor.execute(query_plan_zajec, (result_uczen[1], semestr))

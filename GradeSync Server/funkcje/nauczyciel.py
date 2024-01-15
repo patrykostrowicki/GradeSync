@@ -92,7 +92,7 @@ class zadanie:
             "Friday": "piatek"
         }
 
-        today_pl = days_mapping
+        today_pl = days_mapping.get(today, "poniedzialek")
 
         conn = mysqlconnector.mysql_connect.connect_to_database()
         if conn is None:
@@ -109,7 +109,7 @@ class zadanie:
         zajecia = []
         for klasa, plan_dnia in result_plan_zajec:
             plan_dnia = json.loads(plan_dnia)
-            for szczegoly in plan_dnia.items():
+            for lekcja, szczegoly in plan_dnia.items():
                 if szczegoly.get('prowadzacy_login') == login:
                     zajecia.append({
                         "klasa": klasa,
