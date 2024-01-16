@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uczen));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.oceny = new System.Windows.Forms.TabPage();
@@ -115,6 +115,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel_inne = new System.Windows.Forms.TableLayoutPanel();
             this.dane_ucznia = new MaterialSkin.Controls.MaterialLabel();
+            this.wyloguj = new MetroFramework.Controls.MetroButton();
             this.tabControl.SuspendLayout();
             this.oceny.SuspendLayout();
             this.plan.SuspendLayout();
@@ -816,17 +817,17 @@
             // 
             this.wykres_oceny_sem2.BackColor = System.Drawing.Color.Transparent;
             this.wykres_oceny_sem2.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea5.Name = "ChartArea1";
-            this.wykres_oceny_sem2.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.wykres_oceny_sem2.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.wykres_oceny_sem2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.wykres_oceny_sem2.Legends.Add(legend1);
             this.wykres_oceny_sem2.Location = new System.Drawing.Point(23, 359);
             this.wykres_oceny_sem2.Name = "wykres_oceny_sem2";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.Legend = "Legend1";
-            series5.Name = "wykres_seria";
-            this.wykres_oceny_sem2.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "wykres_seria";
+            this.wykres_oceny_sem2.Series.Add(series1);
             this.wykres_oceny_sem2.Size = new System.Drawing.Size(435, 331);
             this.wykres_oceny_sem2.TabIndex = 2;
             this.wykres_oceny_sem2.Text = "chart1";
@@ -835,17 +836,17 @@
             // 
             this.wykres_oceny_ucznia_sem2.BackColor = System.Drawing.Color.Transparent;
             this.wykres_oceny_ucznia_sem2.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea6.Name = "ChartArea1";
-            this.wykres_oceny_ucznia_sem2.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.wykres_oceny_ucznia_sem2.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.wykres_oceny_ucznia_sem2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.wykres_oceny_ucznia_sem2.Legends.Add(legend2);
             this.wykres_oceny_ucznia_sem2.Location = new System.Drawing.Point(23, 30);
             this.wykres_oceny_ucznia_sem2.Name = "wykres_oceny_ucznia_sem2";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.Legend = "Legend1";
-            series6.Name = "wykres_seria";
-            this.wykres_oceny_ucznia_sem2.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "wykres_seria";
+            this.wykres_oceny_ucznia_sem2.Series.Add(series2);
             this.wykres_oceny_ucznia_sem2.Size = new System.Drawing.Size(435, 331);
             this.wykres_oceny_ucznia_sem2.TabIndex = 3;
             this.wykres_oceny_ucznia_sem2.Text = "chart1";
@@ -867,17 +868,17 @@
             // 
             this.wykres_oceny_sem1.BackColor = System.Drawing.Color.Transparent;
             this.wykres_oceny_sem1.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea7.Name = "ChartArea1";
-            this.wykres_oceny_sem1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.wykres_oceny_sem1.Legends.Add(legend7);
+            chartArea3.Name = "ChartArea1";
+            this.wykres_oceny_sem1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.wykres_oceny_sem1.Legends.Add(legend3);
             this.wykres_oceny_sem1.Location = new System.Drawing.Point(23, 359);
             this.wykres_oceny_sem1.Name = "wykres_oceny_sem1";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series7.Legend = "Legend1";
-            series7.Name = "wykres_seria";
-            this.wykres_oceny_sem1.Series.Add(series7);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "wykres_seria";
+            this.wykres_oceny_sem1.Series.Add(series3);
             this.wykres_oceny_sem1.Size = new System.Drawing.Size(435, 331);
             this.wykres_oceny_sem1.TabIndex = 2;
             this.wykres_oceny_sem1.Text = "chart1";
@@ -886,17 +887,17 @@
             // 
             this.wykres_oceny_ucznia_sem1.BackColor = System.Drawing.Color.Transparent;
             this.wykres_oceny_ucznia_sem1.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea8.Name = "ChartArea1";
-            this.wykres_oceny_ucznia_sem1.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.wykres_oceny_ucznia_sem1.Legends.Add(legend8);
+            chartArea4.Name = "ChartArea1";
+            this.wykres_oceny_ucznia_sem1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.wykres_oceny_ucznia_sem1.Legends.Add(legend4);
             this.wykres_oceny_ucznia_sem1.Location = new System.Drawing.Point(23, 30);
             this.wykres_oceny_ucznia_sem1.Name = "wykres_oceny_ucznia_sem1";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series8.Legend = "Legend1";
-            series8.Name = "wykres_seria";
-            this.wykres_oceny_ucznia_sem1.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series4.Legend = "Legend1";
+            series4.Name = "wykres_seria";
+            this.wykres_oceny_ucznia_sem1.Series.Add(series4);
             this.wykres_oceny_ucznia_sem1.Size = new System.Drawing.Size(435, 331);
             this.wykres_oceny_ucznia_sem1.TabIndex = 3;
             this.wykres_oceny_ucznia_sem1.Text = "chart1";
@@ -1118,11 +1119,22 @@
             this.dane_ucznia.TabIndex = 1;
             this.dane_ucznia.Text = "Jan Kowalski 1b";
             // 
+            // wyloguj
+            // 
+            this.wyloguj.Location = new System.Drawing.Point(979, 31);
+            this.wyloguj.Name = "wyloguj";
+            this.wyloguj.Size = new System.Drawing.Size(75, 23);
+            this.wyloguj.TabIndex = 2;
+            this.wyloguj.Text = "Wyloguj";
+            this.wyloguj.UseSelectable = true;
+            this.wyloguj.Click += new System.EventHandler(this.wyloguj_Click);
+            // 
             // uczen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1081, 860);
+            this.Controls.Add(this.wyloguj);
             this.Controls.Add(this.dane_ucznia);
             this.Controls.Add(this.tabControl);
             this.DrawerShowIconsWhenHidden = true;
@@ -1245,5 +1257,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private MetroFramework.Controls.MetroButton wyloguj;
     }
 }

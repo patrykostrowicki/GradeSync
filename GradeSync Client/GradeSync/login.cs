@@ -14,6 +14,7 @@ namespace GradeSync
         public login()
         {
             InitializeComponent();
+            this.FormClosed += (s, e) => Application.Exit();
         }
 
         bool pokaz = true;
@@ -70,24 +71,25 @@ namespace GradeSync
                                 case "uczen":
                                     var uczenResponse = JsonConvert.DeserializeObject<UserResponse>((string)typeResponse.data.ToString());
                                     uczenResponse.Login = login_.Texts;
-                                    uczen uczenForm = new uczen(uczenResponse);
-                                    uczenForm.FormClosed += (s, args) => this.Close();
+                                    uczen uczenForm = new uczen(uczenResponse, this);
+                                    uczenForm.FormClosed += (s, args) => this.Show();
                                     uczenForm.Show();
                                     break;
                                 case "nauczyciel":
                                     var nauczycielResponse = JsonConvert.DeserializeObject<NauczycielResponse>((string)typeResponse.data.ToString());
                                     nauczycielResponse.Login = login_.Texts;
-                                    nauczyciel nauczycielForm = new nauczyciel(nauczycielResponse);
-                                    nauczycielForm.FormClosed += (s, args) => this.Close();
+                                    nauczyciel nauczycielForm = new nauczyciel(nauczycielResponse, this);
+                                    nauczycielForm.FormClosed += (s, args) => this.Show();
                                     nauczycielForm.Show();
                                     break;
                                 case "admin":
                                     var adminResponse = JsonConvert.DeserializeObject<AdminResponse>((string)typeResponse.data.ToString());
                                     adminResponse.InitializeUczniowie();
                                     adminResponse.Login = login_.Texts;
-                                    admin adminForm = new admin(adminResponse);
-                                    adminForm.FormClosed += (s, args) => this.Close();
+                                    admin adminForm = new admin(adminResponse, this);
+                                    adminForm.FormClosed += (s, args) => this.Show();
                                     adminForm.Show();
+                                    this.Hide();
                                     break;
                                 default:
                                     MessageBox.Show("Nieznany typ użytkownika.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);

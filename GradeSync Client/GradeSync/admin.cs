@@ -14,8 +14,9 @@ namespace GradeSync
     {
         private AdminResponse adminResponse;
         private string wybranaKlasa;
+        private Form loginForm;
 
-        public admin(AdminResponse response)
+        public admin(AdminResponse response, Form loginFormInstance)
         {
             InitializeComponent();
             adminResponse = response;
@@ -24,6 +25,7 @@ namespace GradeSync
             wspólneMetody.StylizujDataGridView(nauczyciele);
             wspólneMetody.StylizujDataGridView(admini);
             wspólneMetody.StylizujDataGridView(plany_lekcji);
+            this.loginForm = loginFormInstance;
         }
 
         private void admin_Load(object sender, System.EventArgs e)
@@ -600,9 +602,9 @@ namespace GradeSync
 
                 var przyciskEdytuj = new DataGridViewButtonCell
                 {
-                    Value = "Edytuj"
+                    Value = "Usuń"
                 };
-                plany_lekcji.Rows[rowIndex].Cells["edytuj"] = przyciskEdytuj;
+                plany_lekcji.Rows[rowIndex].Cells["usun"] = przyciskEdytuj;
 
                 var przyciskWyswietl = new DataGridViewButtonCell
                 {
@@ -705,6 +707,12 @@ namespace GradeSync
         private void dzien_tygodnia_SelectedIndexChanged(object sender, EventArgs e)
         {
             WyswietlPlanLekcji(wybranaKlasa, dzien_tygodnia.SelectedItem.ToString());
+        }
+
+        private void wyloguj_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            loginForm.Show();
         }
     }
 }

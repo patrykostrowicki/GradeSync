@@ -18,7 +18,9 @@ namespace GradeSync
         private UserResponse userResponse;
         private Dictionary<string, List<Ocena>> grupowaneOceny;
 
-        public uczen(UserResponse response)
+        private Form loginForm;
+
+        public uczen(UserResponse response, Form loginFormInstance)
         {
             InitializeComponent();
             userResponse = response;
@@ -31,6 +33,8 @@ namespace GradeSync
 
             f_sem1.CheckedChanged += new EventHandler(RadioButtonFrekwencja_CheckedChanged);
             f_sem2.CheckedChanged += new EventHandler(RadioButtonFrekwencja_CheckedChanged);
+
+            this.loginForm = loginFormInstance;
         }
 
         private void GrupujOceny()
@@ -836,6 +840,12 @@ namespace GradeSync
                 case 4: return "projekt";
                 default: return "inny";
             }
+        }
+
+        private void wyloguj_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            loginForm.Show();
         }
     }
 }

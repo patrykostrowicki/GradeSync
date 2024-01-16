@@ -21,6 +21,8 @@
             private PrintDocument printDocument1 = new PrintDocument();
             private PrintDialog printDialog1 = new PrintDialog();
 
+            private Form loginForm;
+
             public class Frekwencja
             {
                 public string Data { get; set; }
@@ -28,7 +30,7 @@
                 public int Typ { get; set; }
             }
 
-            public nauczyciel(NauczycielResponse response)
+            public nauczyciel(NauczycielResponse response, Form loginFormInstance)
             {
                 InitializeComponent();
                 nauczycielResponse = response;
@@ -40,6 +42,7 @@
                 printDialog1.Document = printDocument1;
 
                 this.wydarzenia.CellClick += new DataGridViewCellEventHandler(wydarzenia_CellClick);
+                this.loginForm = loginFormInstance;
             }
 
             private void nauczyciel_Load(object sender, EventArgs e)
@@ -1636,6 +1639,12 @@
                 default:
                     return -1;
             }
+        }
+
+        private void wyloguj_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            loginForm.Show();
         }
     }
 }
