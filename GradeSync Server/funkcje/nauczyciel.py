@@ -3,137 +3,83 @@ import json
 from . import mysqlconnector
 
 class zadanie:
+    @staticmethod
     def dane(login):
-        conn = mysqlconnector.mysql_connect.connect_to_database()
-        if conn is None:
-            print("Nie udało się połączyć z bazą danych.")
+        try:
+            conn = mysqlconnector.mysql_connect.connect_to_database()
+            if conn is None:
+                print("Nie udało się połączyć z bazą danych.")
+                return False
+
+            cursor = conn.cursor(buffered=True)
+
+            query_nauczyciel = "SELECT imie_nazwisko, klasa, inne FROM nauczyciele WHERE login = %s"
+            cursor.execute(query_nauczyciel, (login,))
+            result_nauczyciel = cursor.fetchone()
+
+            query_uczniowie = "SELECT login, imie_nazwisko, klasa FROM uczniowie"
+            cursor.execute(query_uczniowie)
+            result_uczniowie = cursor.fetchall()
+            uczniowie_list = [{"login": uczen[0], "imie_nazwisko": uczen[1], "klasa": uczen[2]} for uczen in result_uczniowie]
+
+            query_wydarzenia = "SELECT klasa, wystawil, wystawil_login, data, termin, przedmiot, opis, typ FROM wydarzenia"
+            cursor.execute(query_wydarzenia)
+            result_wydarzenia = cursor.fetchall()
+            wydarzenia_list = [{"klasa": wydarzenie[0], "wystawil": wydarzenie[1], "wystawil_login": wydarzenie[2], "data": wydarzenie[3], "termin": wydarzenie[4], "przedmiot": wydarzenie[5], "opis": wydarzenie[6], "typ": wydarzenie[7]} for wydarzenie in result_wydarzenia]
+
+            query_uwagi = "SELECT uczen, uczen_login, data, tresc, klasa, typ FROM uwagi_i_osiagniecia WHERE wystawil_login = %s"
+            cursor.execute(query_uwagi, (login,))
+            result_uwagi = cursor.fetchall()
+            uwagi_list = [{"uczen": uwaga[0], "uczen_login": uwaga[1], "data": uwaga[2], "tresc": uwaga[3], "klasa": uwaga[4], "typ": uwaga[5]} for uwaga in result_uwagi]
+
+            dzisiaj = datetime.now()
+            rok = dzisiaj.year
+            semestr = None
+            if datetime(rok, 1, 1) <= dzisiaj <= datetime(rok, 6, 21):
+                semestr = 2
+            elif datetime(rok, 9, 1) <= dzisiaj <= datetime(rok, 12, 15):
+                semestr = 1
+            elif datetime(rok - 1, 12, 16) <= dzisiaj < datetime(rok, 1, 1):
+                semestr = 2
+
+            today = dzisiaj.strftime("%A")
+            days_mapping = {"Monday": "poniedzialek", "Tuesday": "wtorek", "Wednesday": "sroda", "Thursday": "czwartek", "Friday": "piatek"}
+            today_pl = days_mapping.get(today, "poniedzialek")
+
+            query_plan_zajec = f"SELECT klasa, {today_pl} FROM plan_zajec WHERE semestr = %s"
+            cursor.execute(query_plan_zajec, (semestr,))
+            result_plan_zajec = cursor.fetchall()
+
+            zajecia = []
+            for klasa, plan_dnia in result_plan_zajec:
+                plan_dnia = json.loads(plan_dnia)
+                for lekcja, szczegoly in plan_dnia.items():
+                    if szczegoly.get('prowadzacy_login') == login:
+                        zajecia.append({
+                            "klasa": klasa,
+                            "przedmiot": szczegoly.get('przedmiot')
+                        })
+
+        except Exception as e:
+            print(f"Wystąpił błąd: {e}")
             return False
-
-        cursor = conn.cursor()
-
-        query_nauczyciel = "SELECT imie_nazwisko, klasa, inne FROM nauczyciele WHERE login = %s"
-        cursor.execute(query_nauczyciel, (login,))
-        result_nauczyciel = cursor.fetchone()
-
-        query_uczniowie = "SELECT login, imie_nazwisko, klasa FROM uczniowie"
-        cursor.execute(query_uczniowie)
-        result_uczniowie = cursor.fetchall()
-
-        uczniowie_list = [
-            {"login": uczen[0], "imie_nazwisko": uczen[1], "klasa": uczen[2]}
-            for uczen in result_uczniowie
-        ]
-
-        query_wydarzenia = "SELECT klasa, wystawil, wystawil_login, data, termin, przedmiot, opis, typ FROM wydarzenia"
-        cursor.execute(query_wydarzenia)
-        result_wydarzenia = cursor.fetchall()
-
-        wydarzenia_list = [
-            {
-                "klasa": wydarzenie[0],
-                "wystawil": wydarzenie[1],
-                "wystawil_login": wydarzenie[2],
-                "data": wydarzenie[3],
-                "termin": wydarzenie[4],
-                "przedmiot": wydarzenie[5],
-                "opis": wydarzenie[6],
-                "typ": wydarzenie[7]
-            }
-            for wydarzenie in result_wydarzenia
-        ]
-
-        query_uwagi = "SELECT uczen, uczen_login, data, tresc, klasa, typ FROM uwagi_i_osiagniecia WHERE wystawil_login = %s"
-        cursor.execute(query_uwagi, (login,))
-        result_uwagi = cursor.fetchall()
-
-        uwagi_list = [
-            {
-                "uczen": uwaga[0],
-                "uczen_login": uwaga[1],
-                "data": uwaga[2],
-                "tresc": uwaga[3],
-                "klasa": uwaga[4],
-                "typ": uwaga[5]
-            }
-            for uwaga in result_uwagi
-        ]
-
-        dzisiaj = datetime.now()
-        rok = dzisiaj.year
-
-        semestr = None
-        if datetime(rok, 1, 1) <= dzisiaj <= datetime(rok, 6, 21):
-            semestr = 2
-        elif datetime(rok, 9, 1) <= dzisiaj <= datetime(rok, 12, 15):
-            semestr = 1
-        elif datetime(rok - 1, 12, 16) <= dzisiaj < datetime(rok, 1, 1):
-            semestr = 2
-        else:
-            zajecia.append({
-                "klasa": "brak",
-                "przedmiot": "brak"
-            })
-
-
-        #określenie aktualnego dnia tygodnia
-        today = dzisiaj.strftime("%A")
-        if today not in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
-            zajecia.append({
-               "klasa": "brak",
-               "przedmiot": "brak"
-            })
-
-        #6łumaczenie dnia tygodnia na polski
-        days_mapping = {
-            "Monday": "poniedzialek",
-            "Tuesday": "wtorek",
-            "Wednesday": "sroda",
-            "Thursday": "czwartek",
-            "Friday": "piatek"
-        }
-
-        today_pl = days_mapping.get(today, "poniedzialek")
-
-        conn = mysqlconnector.mysql_connect.connect_to_database()
-        if conn is None:
-            print("Nie udało się połączyć z bazą danych.")
-            return False
-
-        cursor = conn.cursor()
-
-        #zapytanie do bazy o plan zajeć na dany dzień i semestr
-        query_plan_zajec = f"SELECT klasa, {today_pl} FROM plan_zajec WHERE semestr = %s"
-        cursor.execute(query_plan_zajec, (semestr,))
-        result_plan_zajec = cursor.fetchall()
-
-        zajecia = []
-        for klasa, plan_dnia in result_plan_zajec:
-            plan_dnia = json.loads(plan_dnia)
-            for lekcja, szczegoly in plan_dnia.items():
-                if szczegoly.get('prowadzacy_login') == login:
-                    zajecia.append({
-                        "klasa": klasa,
-                        "przedmiot": szczegoly.get('przedmiot')
-                    })
-
-        cursor.close()
-        conn.close()
+        finally:
+            cursor.close()
+            conn.close()
 
         response_data = {
             "imie_nazwisko": result_nauczyciel[0],
-            "klasa": result_nauczyciel[1],
+            "klasa":result_nauczyciel[1],
             "inne": json.loads(result_nauczyciel[2]) if result_nauczyciel[2] else {},
             "uczniowie": uczniowie_list,
             "wydarzenia": wydarzenia_list,
             "uwagi_i_osiagniecia": uwagi_list,
             "zajecia": zajecia
         }
-
-
-        cursor.close()
-        conn.close()
-
+    
         return response_data
+
+
 
     def usun_ocene(opis, ocena, klasa, uczen_login, wystawil_login, przedmiot, data_wystawienia_str):
         conn = mysqlconnector.mysql_connect.connect_to_database()

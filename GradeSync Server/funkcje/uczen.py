@@ -2,112 +2,104 @@ import json
 from . import mysqlconnector
 
 class zadanie:
+    @staticmethod
     def dane(login):
-        conn = mysqlconnector.mysql_connect.connect_to_database()
-        if conn is None:
-            print("Nie udało się połączyć z bazą danych.")
-            return False
+        try:
+            conn = mysqlconnector.mysql_connect.connect_to_database()
+            if conn is None:
+                print("Nie udało się połączyć z bazą danych.")
+                return False
 
-        cursor = conn.cursor()
+            cursor = conn.cursor(buffered=True)
 
-        #pobieranie danych z tabeli uczen
-        query_uczen = "SELECT imie_nazwisko, klasa, ocena_z_zachowania FROM uczniowie WHERE login = %s"
-        cursor.execute(query_uczen, (login,))
-        result_uczen = cursor.fetchone()
+            query_uczen = "SELECT imie_nazwisko, klasa, ocena_z_zachowania FROM uczniowie WHERE login = %s"
+            cursor.execute(query_uczen, (login,))
+            result_uczen = cursor.fetchone()
 
-        #pobieranie planów zajęć dla obu semestrów
-        plany = {}
-        for semestr in [1, 2]:
-            query_plan_zajec = """
-                SELECT poniedzialek, wtorek, sroda, czwartek, piatek
-                FROM plan_zajec
-                WHERE klasa = %s AND semestr = %s
-            """
-            cursor.execute(query_plan_zajec, (result_uczen[1], semestr))
-            plan = cursor.fetchone()
-            
-            plany[f'plan{semestr}'] = {
-                "poniedzialek": json.loads(plan[0]) if plan[0] else {},
-                "wtorek": json.loads(plan[1]) if plan[1] else {},
-                "sroda": json.loads(plan[2]) if plan[2] else {},
-                "czwartek": json.loads(plan[3]) if plan[3] else {},
-                "piatek": json.loads(plan[4]) if plan[4] else {}
-            }
+            plany = {}
+            for semestr in [1, 2]:
+                query_plan_zajec = """
+                    SELECT poniedzialek, wtorek, sroda, czwartek, piatek
+                    FROM plan_zajec
+                    WHERE klasa = %s AND semestr = %s
+                """
+                cursor.execute(query_plan_zajec, (result_uczen[1], semestr))
+                plan = cursor.fetchone()
+                plany[f'plan{semestr}'] = {
+                    "poniedzialek": json.loads(plan[0]) if plan[0] else {},
+                    "wtorek": json.loads(plan[1]) if plan[1] else {},
+                    "sroda": json.loads(plan[2]) if plan[2] else {},
+                    "czwartek": json.loads(plan[3]) if plan[3] else {},
+                    "piatek": json.loads(plan[4]) if plan[4] else {}
+                }
 
-        query_oceny = "SELECT przedmiot, ocena, wystawil, data_wystawienia,opis FROM oceny WHERE uczen_login = %s"
-        cursor.execute(query_oceny, (login,))
-        oceny = cursor.fetchall()
+            query_oceny = "SELECT przedmiot, ocena, wystawil, data_wystawienia, opis FROM oceny WHERE uczen_login = %s"
+            cursor.execute(query_oceny, (login,))
+            oceny = cursor.fetchall()
 
-        query_frekwencja = "SELECT data, przedmiot, typ FROM Frekwencja WHERE login = %s"
-        cursor.execute(query_frekwencja, (login,))
-        frekwencja = cursor.fetchall()
+            query_frekwencja = "SELECT data, przedmiot, typ FROM frekwencja WHERE login = %s"
+            cursor.execute(query_frekwencja, (login,))
+            frekwencja = cursor.fetchall()
 
-        frekwencja_list = [
-            {
+            frekwencja_list = [{
                 "data": str(data),
                 "przedmiot": przedmiot,
                 "typ": typ
-            }
-            for data, przedmiot, typ in frekwencja
-        ]
+            } for data, przedmiot, typ in frekwencja]
 
-        oceny_dict = [
-            {
+            oceny_dict = [{
                 "przedmiot": przedmiot,
                 "ocena": ocena,
                 "wystawil": wystawil,
                 "data_wystawienia": data_wystawienia,
                 "opis": opis
-            }
-            for przedmiot, ocena, wystawil, data_wystawienia, opis in oceny
-        ]
+            } for przedmiot, ocena, wystawil, data_wystawienia, opis in oceny]
 
-        query_uwagi = "SELECT wystawil, data, tresc, typ FROM uwagi_i_osiagniecia WHERE uczen_login = %s"
-        cursor.execute(query_uwagi, (login,))
-        uwagi = cursor.fetchall()
+            query_uwagi = "SELECT wystawil, data, tresc, typ FROM uwagi_i_osiagniecia WHERE uczen_login = %s"
+            cursor.execute(query_uwagi, (login,))
+            uwagi = cursor.fetchall()
 
-        uwagi_list = [
-            {
+            uwagi_list = [{
                 "wystawil": wystawil,
                 "data": str(data),
                 "tresc": tresc,
                 "typ": typ
-            }
-            for wystawil, data, tresc, typ in uwagi
-        ]
+            } for wystawil, data, tresc, typ in uwagi]
 
-        query_wydarzenia = "SELECT wystawil, data, termin, typ, opis, przedmiot FROM wydarzenia WHERE klasa = %s"
-        cursor.execute(query_wydarzenia, (result_uczen[1],))
-        wydarzenia = cursor.fetchall()
+            query_wydarzenia = "SELECT wystawil, data, termin, typ, opis, przedmiot FROM wydarzenia WHERE klasa = %s"
+            cursor.execute(query_wydarzenia, (result_uczen[1],))
+            wydarzenia = cursor.fetchall()
 
-        wydarzenia_list = [
-            {
+            wydarzenia_list = [{
                 "wystawil": wystawil,
                 "data": str(data),
                 "termin": str(termin),
                 "typ": typ,
                 "opis": opis,
                 "przedmiot": przedmiot
-            }
-            for wystawil, data, termin, typ, opis, przedmiot in wydarzenia
-        ]
+            } for wystawil, data, termin, typ, opis, przedmiot in wydarzenia]
 
-        cursor.close()
-        conn.close()
-        
+        except Exception as e:
+            print(f"Wystąpił błąd: {e}")
+            return False
+        finally:
+            cursor.close()
+            conn.close()
+
         response_data = {
-                "imie_nazwisko": result_uczen[0],
-                "klasa": result_uczen[1],
-                "ocena_z_zachowania": result_uczen[2],
-                "oceny": oceny_dict,
-                "plan1": plany['plan1'],
-                "plan2": plany['plan2'],
-                "frekwencja": frekwencja_list,
-                "uwagi": uwagi_list,
-                "wydarzenia": wydarzenia_list
-            }
+            "imie_nazwisko": result_uczen[0],
+            "klasa": result_uczen[1],
+            "ocena_z_zachowania": result_uczen[2],
+            "oceny": oceny_dict,
+            "plan1": plany['plan1'],
+            "plan2": plany['plan2'],
+            "frekwencja": frekwencja_list,
+            "uwagi": uwagi_list,
+            "wydarzenia": wydarzenia_list
+        }
 
         return response_data
+
     
     def untk(klasa, przedmiot, user_login):
         conn = mysqlconnector.mysql_connect.connect_to_database()
