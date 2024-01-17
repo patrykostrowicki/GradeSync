@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GradeSync.klasy
@@ -31,5 +32,21 @@ namespace GradeSync.klasy
         {
             rt.Invoke(new MethodInvoker(delegate () { rt.AppendText(text + "\r\n"); rt.ScrollToCaret(); }));
         }
+
+        internal static int SprawdzSemestr()
+        {
+            DateTime dzisiaj = DateTime.Today;
+            if (dzisiaj >= new DateTime(dzisiaj.Year, 9, 1) && dzisiaj <= new DateTime(dzisiaj.Year, 12, 15))
+            {
+                return 1;
+            }
+            else if ((dzisiaj >= new DateTime(dzisiaj.Year, 12, 16) && dzisiaj.Year == dzisiaj.Year) ||
+                     (dzisiaj <= new DateTime(dzisiaj.Year, 6, 21) && dzisiaj.Year == dzisiaj.Year))
+            {
+                return 2;
+            }
+            return 0;
+        }
+
     }
 }

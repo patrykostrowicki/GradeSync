@@ -290,15 +290,13 @@ namespace GradeSync
 
         private void UstalISprawdzSemestr()
         {
-            DateTime dzisiaj = DateTime.Today;
-            if (dzisiaj >= new DateTime(dzisiaj.Year, 9, 1) && dzisiaj <= new DateTime(dzisiaj.Year, 12, 15))
+            if (wspólneMetody.SprawdzSemestr() == 1)
             {
                 sem1.Checked = true;
                 f_sem1.Checked = true;
                 FiltrujOcenyPoSemestrze(1);
             }
-            else if ((dzisiaj >= new DateTime(dzisiaj.Year, 12, 16) && dzisiaj.Year == dzisiaj.Year) ||
-                     (dzisiaj <= new DateTime(dzisiaj.Year, 6, 21) && dzisiaj.Year == dzisiaj.Year))
+            else
             {
                 sem2.Checked = true;
                 f_sem2.Checked = true;

@@ -304,6 +304,14 @@ def utworz_admina():
     response_data = admin.zadanie.utworz_admina(login, haslo)
     return jsonify(success=response_data)
 
+@app.route('/usun_plan_zajec', methods=['DELETE'])
+def usun_plan_zajec():
+    klasa = request.args.get('klasa')
+    semestr = request.args.get('semestr')
+
+    response_data = admin.zadanie.usun_plan_zajec(klasa, semestr)
+    return jsonify(response=response_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

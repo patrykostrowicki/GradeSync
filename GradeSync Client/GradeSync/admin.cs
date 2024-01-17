@@ -655,6 +655,40 @@ namespace GradeSync
                 wyswietl_plan_lekcji.Clear();
                 wybranaKlasa = plany_lekcji.Rows[e.RowIndex].Cells["klasa"].Value?.ToString();
             }
+            else if (e.ColumnIndex == plany_lekcji.Columns["usun"].Index && e.RowIndex >= 0)
+            {
+                string klasa = plany_lekcji.Rows[e.RowIndex].Cells["klasa"].Value.ToString();
+                int semestr = wspólneMetody.SprawdzSemestr();
+
+                string confirmMessage = $"Czy na pewno chcesz usunąć plan lekcji dla klasy {klasa}?";
+
+                var result = MessageBox.Show(confirmMessage, "Potwierdzenie usunięcia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    using (var client = new HttpClient())
+                    {
+                        var requestUri = $"{Properties.Resources.adres_api}/usun_plan_zajec?klasa={klasa}&semestr={semestr}";
+                        var response = client.DeleteAsync(requestUri).Result;
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Plan lekcji został usunięty", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            var planDoUsuniecia = adminResponse.PlanyLekcji.FirstOrDefault(p => p.Klasa == klasa);
+                            if (planDoUsuniecia != null)
+                            {
+                                adminResponse.PlanyLekcji.Remove(planDoUsuniecia);
+                            }
+
+                            WypelnijDataGridViewPlanamiLekcji();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wystąpił błąd przy usuwaniu planu lekcji", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
 
         private void WyswietlPlanLekcji(string klasa, string dzienTygodnia)

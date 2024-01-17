@@ -239,3 +239,27 @@ class zadanie:
                 cursor.close()
             if conn:
                 conn.close()
+
+    def usun_plan_zajec(klasa, semestr):
+        conn = mysqlconnector.mysql_connect.connect_to_database()
+        if conn is None:
+            print("Nie udało się połączyć z bazą danych.")
+            return False
+
+        try:
+            cursor = conn.cursor()
+
+            query_usun_plan = "DELETE FROM plan_zajec WHERE klasa = %s AND semestr = %s"
+            cursor.execute(query_usun_plan, (klasa, semestr))
+
+            conn.commit()
+            return True
+
+        except Exception as e:
+            conn.rollback()
+            print(f"Wystąpił błąd: {e}")
+            return False
+
+        finally:
+            cursor.close()
+            conn.close()
