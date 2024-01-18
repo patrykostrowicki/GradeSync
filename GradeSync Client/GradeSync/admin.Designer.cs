@@ -500,6 +500,7 @@
             this.nowy_plan.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.nowy_plan.UseAccentColor = false;
             this.nowy_plan.UseVisualStyleBackColor = true;
+            this.nowy_plan.Click += new System.EventHandler(this.nowy_plan_Click);
             // 
             // plan_klasy
             // 

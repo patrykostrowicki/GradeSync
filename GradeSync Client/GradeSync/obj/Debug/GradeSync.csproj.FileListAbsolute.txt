@@ -80,3 +80,4 @@ C:\Users\altai\Desktop\GitHub\GradeSync\GradeSync Client\GradeSync\obj\Debug\Gra
 C:\Users\altai\Desktop\GitHub\GradeSync\GradeSync Client\GradeSync\obj\Debug\GradeSync.csproj.CopyComplete
 C:\Users\altai\Desktop\GitHub\GradeSync\GradeSync Client\GradeSync\obj\Debug\GradeSync.exe
 C:\Users\altai\Desktop\GitHub\GradeSync\GradeSync Client\GradeSync\obj\Debug\GradeSync.pdb
+C:\Users\altai\Desktop\GitHub\GradeSync\GradeSync Client\GradeSync\obj\Debug\GradeSync.kontrolki.NowyPlanLekcjiForm.resources

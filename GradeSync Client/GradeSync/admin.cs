@@ -748,5 +748,13 @@ namespace GradeSync
             this.Hide();
             loginForm.Show();
         }
+
+        private void nowy_plan_Click(object sender, EventArgs e)
+        {
+            using (NowyPlanLekcjiForm nowyPlanForm = new NowyPlanLekcjiForm(adminResponse))
+            {
+                nowyPlanForm.ShowDialog();
+            }
+        }
     }
 }

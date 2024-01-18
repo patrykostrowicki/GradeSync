@@ -92,6 +92,9 @@
     <Compile Include="kontrolki\edytujUwage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="kontrolki\nowaLekcja.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="kontrolki\nowaUwaga.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +105,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="kontrolki\nowyNauczyciel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kontrolki\nowyPlanLekcji.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="kontrolki\nowyUzytkownik.cs">
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="kontrolki\noweWydarzenie.resx">
       <DependentUpon>noweWydarzenie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kontrolki\nowyPlanLekcji.resx">
+      <DependentUpon>nowyPlanLekcji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="kontrolki\textbox.resx">
       <DependentUpon>textbox.cs</DependentUpon>
