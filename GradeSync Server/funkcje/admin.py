@@ -263,3 +263,32 @@ class zadanie:
         finally:
             cursor.close()
             conn.close()
+
+    def dodaj_plan_lekcji(klasa, semestr, poniedzialek, wtorek, sroda, czwartek, piatek):
+        conn = mysqlconnector.mysql_connect.connect_to_database()
+        if conn is None:
+            print("Nie udało się połączyć z bazą danych.")
+            return False
+        
+        try:
+            cursor = conn.cursor()
+
+            query = """
+            INSERT INTO plan_zajec (klasa, semestr, poniedzialek, wtorek, sroda, czwartek, piatek) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(query, (klasa, semestr, poniedzialek, wtorek, sroda, czwartek, piatek))
+            conn.commit()
+            return True
+
+        except Exception as e:
+            print(f"Wystąpił błąd: {e}")
+            if conn:
+                conn.rollback()
+            return False
+
+        finally:
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()

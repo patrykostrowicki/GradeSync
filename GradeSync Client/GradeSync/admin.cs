@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace GradeSync
 {
@@ -753,8 +754,34 @@ namespace GradeSync
         {
             using (NowyPlanLekcjiForm nowyPlanForm = new NowyPlanLekcjiForm(adminResponse))
             {
-                nowyPlanForm.ShowDialog();
+                if (nowyPlanForm.ShowDialog() == DialogResult.OK)
+                {
+                    var jsonPlanLekcji = nowyPlanForm.json;
+                    WyslijPlanLekcji(jsonPlanLekcji);
+                }
             }
         }
+
+        private async void WyslijPlanLekcji(string jsonPlanLekcji)
+        {
+            using (var client = new HttpClient())
+            {
+                var content = new StringContent(jsonPlanLekcji, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync($"{Properties.Resources.adres_api}/dodaj_plan_lekcji", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Plan lekcji został pomyślnie dodany", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PlanLekcji nowyPlan = JsonConvert.DeserializeObject<PlanLekcji>(jsonPlanLekcji);
+                    adminResponse.PlanyLekcji.Add(nowyPlan);
+                    WypelnijDataGridViewPlanamiLekcji();
+                }
+                else
+                {
+                    MessageBox.Show("Wystąpił błąd przy dodawaniu planu lekcji", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

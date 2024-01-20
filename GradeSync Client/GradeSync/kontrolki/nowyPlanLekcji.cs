@@ -1,5 +1,6 @@
 ﻿using GradeSync.klasy;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GradeSync.kontrolki
@@ -9,9 +10,13 @@ namespace GradeSync.kontrolki
         private DataGridView dataGridView;
         private Button btnUtworz;
         private Button btnAnuluj;
+        private Label labelKlasa;
+        private TextBox textBoxKlasa;
         private FlowLayoutPanel buttonsPanel;
         private TableLayoutPanel tableLayoutPanel;
         private AdminResponse adminResponse;
+
+        public string json;
 
         public NowyPlanLekcjiForm(AdminResponse adminResponse)
         {
@@ -107,6 +112,18 @@ namespace GradeSync.kontrolki
                 }
             }
 
+            labelKlasa = new Label();
+            labelKlasa.Text = "Wybierz klasę:";
+            labelKlasa.AutoSize = true;
+            labelKlasa.Padding = new Padding(0, 10, 0, 0);
+
+            textBoxKlasa = new TextBox();
+            textBoxKlasa.Width = 200; 
+            buttonsPanel.Controls.Add(labelKlasa);
+            buttonsPanel.Controls.Add(textBoxKlasa);
+            buttonsPanel.Controls.Add(btnUtworz);
+            buttonsPanel.Controls.Add(btnAnuluj);
+
             this.btnUtworz.Click += new EventHandler(this.btnUtworz_Click);
             this.btnAnuluj.Click += new EventHandler(this.btnAnuluj_Click);
 
@@ -136,15 +153,75 @@ namespace GradeSync.kontrolki
         private void AktualizujKomorke(int rowIndex, int columnIndex, string sala, string przedmiot, string nauczyciel, string login)
         {
             DataGridViewTextBoxCell textBoxCell = new DataGridViewTextBoxCell();
-            textBoxCell.Value = $"Sala: {sala} | Przedmiot: {przedmiot} | Nauczyciel: {nauczyciel} | Login: {login}";
+            textBoxCell.Value = $"Sala: {sala} | Przedmiot: {przedmiot} | Prowadzacy: {nauczyciel} | Prowadzacy_login: {login}";
 
             this.dataGridView[columnIndex, rowIndex] = textBoxCell;
+            textBoxCell.ReadOnly = true;
         }
+
 
         private void btnUtworz_Click(object sender, EventArgs e)
         {
-            // Logika tworzenia nowego planu lekcji
+            var planLekcji = new Dictionary<string, Dictionary<string, object>>();
+
+            string[] dniTygodnia = { "poniedzialek", "wtorek", "sroda", "czwartek", "piatek" };
+
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    var cell = dataGridView[j, i];
+                    if (cell is DataGridViewTextBoxCell && cell.Value != null && !(cell.Value.ToString().Contains("Dodaj lekcję")))
+                    {
+                        string[] lekcjaDane = cell.Value.ToString().Split('|');
+                        var lekcjaInfo = new Dictionary<string, object>();
+
+                        foreach (var dane in lekcjaDane)
+                        {
+                            string[] keyValue = dane.Split(new[] { ':' }, 2);
+                            if (keyValue.Length == 2)
+                            {
+                                string key = keyValue[0].Trim().ToLower().Replace(" ", "_");
+                                lekcjaInfo[key] = keyValue[1].Trim();
+                            }
+                        }
+
+                        string dzien = dniTygodnia[j];
+                        if (!planLekcji.ContainsKey(dzien))
+                        {
+                            planLekcji[dzien] = new Dictionary<string, object>();
+                        }
+                        planLekcji[dzien].Add($"lek{i}", lekcjaInfo);
+                    }
+                }
+            }
+
+            string klasa = textBoxKlasa.Text;
+            int semestr = wspólneMetody.SprawdzSemestr();
+
+            var wynikoweDane = new Dictionary<string, object>
+    {
+        {"klasa", klasa},
+        {"semestr", semestr}
+    };
+
+            foreach (var dzien in dniTygodnia)
+            {
+                if (planLekcji.ContainsKey(dzien))
+                {
+                    wynikoweDane[dzien] = planLekcji[dzien];
+                }
+                else
+                {
+                    wynikoweDane[dzien] = new Dictionary<string, object>();
+                }
+            }
+
+            json = Newtonsoft.Json.JsonConvert.SerializeObject(wynikoweDane, Newtonsoft.Json.Formatting.Indented);
+
+            this.DialogResult = DialogResult.OK;
         }
+    
 
         private void btnAnuluj_Click(object sender, EventArgs e)
         {

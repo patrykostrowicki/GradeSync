@@ -42,18 +42,15 @@ namespace GradeSync.kontrolki
             this.btnDodaj = new Button();
             this.btnAnuluj = new Button();
 
-            // Ustawienia FlowLayoutPanel
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel.Dock = DockStyle.Fill;
             flowLayoutPanel.AutoSize = true;
 
-            // Ustawienia Label
             this.labelPrzedmiot.Text = "Wybierz przedmiot:";
             this.labelNauczyciel.Text = "Wybierz nauczyciela:";
             this.labelSala.Text = "Wpisz salę:";
 
-            // Ustawienia ComboBox dla przedmiotów
             this.comboBoxPrzedmioty.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBoxPrzedmioty.Items.AddRange(new string[]
             {
@@ -63,11 +60,9 @@ namespace GradeSync.kontrolki
         "Podstawy przedsiębiorczości"
             });
 
-            // Ustawienia przycisków
             this.btnDodaj.Text = "Dodaj";
             this.btnAnuluj.Text = "Anuluj";
 
-            // Dodawanie kontrolek do FlowLayoutPanel
             flowLayoutPanel.Controls.Add(this.labelPrzedmiot);
             flowLayoutPanel.Controls.Add(this.comboBoxPrzedmioty);
             flowLayoutPanel.Controls.Add(this.labelNauczyciel);
@@ -77,20 +72,16 @@ namespace GradeSync.kontrolki
             flowLayoutPanel.Controls.Add(this.btnDodaj);
             flowLayoutPanel.Controls.Add(this.btnAnuluj);
 
-            // Ustawienie FlowLayoutPanel jako kontrolki podrzędnej dla Form
             this.Controls.Add(flowLayoutPanel);
 
-            // Ustawienia Form
             this.Text = "Dodaj Lekcję";
-            this.AutoSize = true; // Formularz dopasuje swój rozmiar do zawartości
+            this.AutoSize = true;
             this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            this.StartPosition = FormStartPosition.CenterScreen; // Otwiera formularz na środku ekranu
+            this.StartPosition = FormStartPosition.CenterScreen;
 
-            // Event handlers
             this.btnDodaj.Click += new EventHandler(this.btnDodaj_Click);
             this.btnAnuluj.Click += new EventHandler(this.btnAnuluj_Click);
 
-            // Aby upewnić się, że wszystkie kontrolki są widoczne, możemy ustawić minimalne rozmiary dla Form
             this.MinimumSize = new Size(300, flowLayoutPanel.PreferredSize.Height + 50);
         }
 
@@ -110,8 +101,8 @@ namespace GradeSync.kontrolki
             sala = this.textBoxSala.Text;
             loginNauczyciela = ZnajdzLoginNauczyciela(nauczyciel);
 
-            this.DialogResult = DialogResult.OK; // Ustawienie rezultatu dialogu na OK
-            this.Close(); // Zamknięcie formularza
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
 

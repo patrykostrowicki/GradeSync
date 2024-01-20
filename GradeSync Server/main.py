@@ -312,6 +312,23 @@ def usun_plan_zajec():
     response_data = admin.zadanie.usun_plan_zajec(klasa, semestr)
     return jsonify(response=response_data)
 
+@app.route('/dodaj_plan_lekcji', methods=['POST'])
+def dodaj_plan_lekcji():
+    data = request.get_json()
+    if not data:
+        return jsonify({"success": False, "message": "Brak danych JSON"})
+
+    klasa = data.get('klasa')
+    semestr = data.get('semestr')
+    poniedzialek = data.get('poniedzialek')
+    wtorek = data.get('wtorek')
+    sroda = data.get('sroda')
+    czwartek = data.get('czwartek')
+    piatek = data.get('piatek')
+
+
+    response_data = admin.zadanie.dodaj_plan_lekcji(klasa, semestr, poniedzialek, wtorek, sroda, czwartek, piatek)
+    return jsonify(success=response_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
