@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `uczniowie` (
   `login` varchar(50) NOT NULL,
   `imie_nazwisko` varchar(100) NOT NULL,
   `klasa` varchar(50) NOT NULL,
-  `ocena_z_zachowania` decimal(2,1) DEFAULT NULL,
+  `ocena_z_zachowania` decimal(2,1) NOT NULL, 
   PRIMARY KEY (`login`),
   FOREIGN KEY (`login`) REFERENCES `uzytkownicy` (`login`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `uczniowie` (
 -- Tabela nauczyciele
 CREATE TABLE IF NOT EXISTS `nauczyciele` (
   `login` varchar(255) NOT NULL,
-  `imie_nazwisko` varchar(255) DEFAULT NULL,
-  `klasa` varchar(255) DEFAULT NULL,
-  `inne` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`inne`)),
+  `imie_nazwisko` varchar(255) NOT NULL,
+  `klasa` varchar(255) NOT NULL,
+  `inne` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`inne`)),
   PRIMARY KEY (`login`),
   FOREIGN KEY (`login`) REFERENCES `uzytkownicy` (`login`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -32,23 +32,23 @@ CREATE TABLE IF NOT EXISTS `nauczyciele` (
 -- Tabela frekwencja
 CREATE TABLE IF NOT EXISTS `frekwencja` (
   `data` timestamp NOT NULL DEFAULT current_timestamp(),
-  `przedmiot` varchar(100) DEFAULT NULL,
-  `typ` int(11) DEFAULT NULL CHECK (`typ` >= 1 and `typ` <= 3),
+  `przedmiot` varchar(100) NOT NULL,
+  `typ` int(11) NOT NULL CHECK (`typ` >= 1 and `typ` <= 3),
   `login` varchar(50) NOT NULL,
-  `uczen` varchar(50) DEFAULT NULL,
-  `klasa` varchar(10) DEFAULT NULL,
+  `uczen` varchar(50) NOT NULL, 
+  `klasa` varchar(10) NOT NULL, 
   FOREIGN KEY (`login`) REFERENCES `uczniowie` (`login`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabela oceny
 CREATE TABLE IF NOT EXISTS `oceny` (
   `uczen_login` varchar(50) NOT NULL,
-  `wystawil` varchar(100) DEFAULT NULL,
-  `ocena` decimal(2,1) DEFAULT NULL,
-  `przedmiot` varchar(50) DEFAULT NULL,
-  `data_wystawienia` date DEFAULT curdate(),
-  `opis` text DEFAULT NULL,
-  `klasa` varchar(10) DEFAULT NULL,
+  `wystawil` varchar(100) NOT NULL,
+  `ocena` decimal(2,1) NOT NULL,
+  `przedmiot` varchar(50) NOT NULL, 
+  `data_wystawienia` date NOT NULL DEFAULT curdate(),
+  `opis` text NOT NULL,
+  `klasa` varchar(10) NOT NULL,
   `wystawil_login` varchar(55) NOT NULL,
   PRIMARY KEY (`uczen_login`, `wystawil_login`),
   FOREIGN KEY (`uczen_login`) REFERENCES `uczniowie` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -57,14 +57,14 @@ CREATE TABLE IF NOT EXISTS `oceny` (
 
 -- Tabela uwagi_i_osiagniecia
 CREATE TABLE IF NOT EXISTS `uwagi_i_osiagniecia` (
-  `uczen` varchar(50) DEFAULT NULL,
+  `uczen` varchar(50) NOT NULL,
   `uczen_login` varchar(50) NOT NULL,
-  `wystawil` varchar(50) DEFAULT NULL,
+  `wystawil` varchar(50) NOT NULL,
   `wystawil_login` varchar(50) NOT NULL,
-  `data` date DEFAULT NULL,
-  `tresc` text DEFAULT NULL,
-  `klasa` varchar(10) DEFAULT NULL,
-  `typ` int(11) DEFAULT NULL CHECK (`typ` in (1,2)),
+  `data` date NOT NULL,
+  `tresc` text NOT NULL,
+  `klasa` varchar(10) NOT NULL,
+  `typ` int(11) NOT NULL CHECK (`typ` in (1,2)),
   PRIMARY KEY (`uczen_login`, `wystawil_login`),
   FOREIGN KEY (`uczen_login`) REFERENCES `uczniowie` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`wystawil_login`) REFERENCES `nauczyciele` (`login`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -87,12 +87,12 @@ CREATE TABLE IF NOT EXISTS `wydarzenia` (
 -- Tabela plan_zajec
 CREATE TABLE IF NOT EXISTS `plan_zajec` (
   `klasa` varchar(50) NOT NULL,
-  `semestr` tinyint(4) DEFAULT NULL CHECK (`semestr` in (1,2)),
-  `poniedzialek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`poniedzialek`)),
-  `wtorek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`wtorek`)),
-  `sroda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`sroda`)),
-  `czwartek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`czwartek`)),
-  `piatek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`piatek`))
+  `semestr` tinyint(4) NOT NULL CHECK (`semestr` in (1,2)),
+  `poniedzialek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`poniedzialek`)),
+  `wtorek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`wtorek`)),
+  `sroda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`sroda`)),
+  `czwartek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`czwartek`)),
+  `piatek` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`piatek`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Przykładowe dane
