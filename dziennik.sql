@@ -4,7 +4,7 @@ USE `dziennik`;
 -- Tabela uzytkownicy
 CREATE TABLE IF NOT EXISTS `uzytkownicy` (
   `login` varchar(50) NOT NULL,
-  `haslo` varchar(50) NOT NULL,
+  `haslo` varchar(150) NOT NULL,
   `typ` varchar(50) NOT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
