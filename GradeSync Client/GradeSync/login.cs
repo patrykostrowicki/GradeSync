@@ -41,7 +41,7 @@ namespace GradeSync
                 return;
             }
 
-            string url = $"{Properties.Resources.adres_api}/login?login={login}&haslo={haslo_}";
+            string url = $"{Properties.Resources.adres_api}/login?login={login}&haslo={CryptoHelper.Encrypt(haslo_);}";
 
             Task.Run(async () =>
             {
