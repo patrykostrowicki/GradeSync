@@ -244,7 +244,7 @@ namespace GradeSync
                                 new KeyValuePair<string, string>("login", login),
                                 new KeyValuePair<string, string>("imie_nazwisko", imieNazwisko),
                                 new KeyValuePair<string, string>("klasa", klasa),
-                                new KeyValuePair<string, string>("haslo", haslo)
+                                new KeyValuePair<string, string>("haslo", CryptoHelper.Encrypt(haslo))
                             });
 
                             var response = client.PostAsync(requestUri, content).Result;
@@ -377,7 +377,7 @@ namespace GradeSync
                         new KeyValuePair<string, string>("login", login),
                         new KeyValuePair<string, string>("imie_nazwisko", imieNazwisko),
                         new KeyValuePair<string, string>("klasa", klasa),
-                        new KeyValuePair<string, string>("haslo", haslo),
+                        new KeyValuePair<string, string>("haslo", CryptoHelper.Encrypt(haslo)),
                         new KeyValuePair<string, string>("przedmioty", przedmiotyJson)
                     });
 
@@ -561,7 +561,7 @@ namespace GradeSync
                             var content = new FormUrlEncodedContent(new[]
                             {
                         new KeyValuePair<string, string>("login", login),
-                        new KeyValuePair<string, string>("haslo", haslo)
+                        new KeyValuePair<string, string>("haslo", CryptoHelper.Encrypt(haslo))
                     });
 
                             var response = client.PostAsync(requestUri, content).Result;
